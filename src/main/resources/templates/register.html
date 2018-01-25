@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+</head>
+<body>
+<div style="text-align: center">
+    <center>
+    <br>
+    <span th:text="${info}"></span>
+    </br>
+    <div>
+        <h1>REJESTRACJA</h1>
+        <p><a th:href="login">Logowanie</a></p>
+    </div>
+    <form method="post" th:object="${registerForm}"  th:action="@{/register}">
+        <span><p th:text="${checkLogin}"></p></span>
+        <table>
+            <tr>
+                <td>Login  </td>
+                <td ><input type="text" th:field="*{login}" placeholder="login"></td>
+                <td> <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Error</span></td>
+            </tr>
+           <tr>
+               <td>Password  </td>
+               <td><input type="password" th:field="*{password}" placeholder="hasło"></td>
+               <td><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></td>
+           </tr>
+            <tr>
+                <td>Imię Nazwisko  </td>
+                <td><input type="text" th:field="*{name}" placeholder="imie nazwisko"></td>
+                <td><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="wyslij"></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+    </h1>
+
+    </center>
+</div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona główna</title>
+</head>
+<body>
+<div style="text-align: center">
+    <center>
+    <h1 th:text="' Witaj '+${login}"></h1>
+   <p>Dodaj książki do bazy</p>
+    <div>
+        <form method="post" th:object="${bookForm}" th:action="@{/}">
+            <table>
+                <tr>
+                    <td>Tytuł  </td>
+                    <td><input type="text" th:field="*{title}" placeholder="tytuł"></td>
+                    <td th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></td>
+                </tr>
+                <tr>
+                    <td>Autor   </td>
+                    <td><input type="text" th:field="*{author}" placeholder="autor"></td>
+                    <td th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></td>
+                </tr>
+                <tr>
+                    <td>Liczba Stron   </td>
+                    <td><input type="number" th:field="*{pages}" placeholder="iczba stron"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Dodaj"></td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </form>
+    </div>
+        <div>
+            <table  border="1" cellpadding="3" cellspacing="0" align="center" style="background-color: cadetblue">
+                <tr>
+                    <th>Id</th>
+                    <th>Tytuł</th>
+                    <th>Autor</th>
+                    <th>Ilość stron</th>
+                </tr>
+                <th:block th:each="book : ${bookModel}">
+                    <tr>
+                        <td th:text="${book.id}"></td>
+                        <td th:text="${book.title}"></td>
+                        <td th:text="${book.author}"></td>
+                        <td th:text="${book.pages}"></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
+    </center>
+</div>
+<div>
+    <h2><a th:href="delBook">Usuwanię książek</a></h2>
+    <div>
+        <form method="post" th:name="delBook" th:action="@{/}">
+            <p>Podaj Id książki do usunięcia<input type="text" th:name="id" placeholder="ID"> </p>
+            <p><input type="submit" value="Usuń"></p>
+        </form>
+
+        <span th:text="${error}"></span>
+        <p th:text = ${checkId}></p>
+    </div>
+</div>
+
+</body>
+</html>

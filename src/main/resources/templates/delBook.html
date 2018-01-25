@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuwanie książek z bazy</title>
+</head>
+<body>
+    <div>
+        <h1>Usuwanie kiążek</h1>
+    </div>
+    <div>
+        <form method="post" th:name="delBook" th:action="@{/delBook}">
+        <p>Podaj Id książki do usunięcia<input type="text" th:name="id" placeholder="ID"> </p>
+        <p><input type="submit" value="Usuń"></p>
+        </form>
+
+        <span th:text="${error}"></span>
+    </div>
+
+</body>
+</html>

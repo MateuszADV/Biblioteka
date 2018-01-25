@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+</head>
+<body>
+    <!--<p th:text="${userModel}"></p>-->
+
+    <table  border="1" cellpadding="3" cellspacing="0" align="center">
+        <tr>
+            <th>Tytuł</th>
+            <th>Autor</th>
+            <th>Ilość stron</th>
+        </tr>
+    <th:block th:each="book : ${userModel}">
+        <tr>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.pages}"></td>
+        </tr>
+    </th:block>
+    </table>
+</body>
+</html>
