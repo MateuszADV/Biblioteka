@@ -36,7 +36,6 @@ public class LoginController {
                             Model model){
         boolean isCorectData=userRepository.existsByLoginAndPassword(login,password);
 
-
         if(isCorectData){
             userService.setLogIn(true);
             userService.setLogin(login);

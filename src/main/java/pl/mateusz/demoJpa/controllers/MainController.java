@@ -58,6 +58,54 @@ public class MainController {
                             @RequestParam(value = "id",required = false) String someId,
                             Model model){
 
+        if(someId!="" && someId!=null){     //sprawdzanie czy Id jest pustu lub nullem
+            Boolean checkIdEqualsInList = checkIdBoogInList(someId); //zwraca czy dana książka którą user
+                                                                    //chce usunąć znajduje sie w jego bazie książęk
+            model.addAttribute("checkID",checkIdEqualsInList);
+            System.out.println(checkIdEqualsInList);
+
+            //Usuwanie książki na podstawie podanego id przez usera
+            if(checkIdEqualsInList==true) {
+                model.addAttribute("error", "Pomyślnie usunięto książkę: " + someId);
+                addBookRepisitory.delete(Integer.parseInt(someId));
+                bookList(model, userModel);
+                return "index";
+
+               /* try {
+                    model.addAttribute("error", "Pomyślnie usunięto książkę: " + someId);
+                    addBookRepisitory.delete(Integer.parseInt(someId));
+                    bookList(model, userModel);
+                    return "index";
+                } catch (Exception e) {
+                    model.addAttribute("error", "Podane id nie istnieje: " + someId);
+                    return "index";
+                }*/
+            }else {
+                return "redirect:/";
+            }
+        }
+
+        UserModel userModel= userRepository.findByLogin(userService.getLogin());
+        if(result.hasErrors() && userService.isLogIn()==true){
+            bookList(model, userModel);
+            checkLogin(model);
+            return "index";
+        }
+
+        if(userService.isLogIn()==true){
+            model.addAttribute("bookForm",new AddBookForm());
+            checkLogin(model);              //Sprawdza czy User jest zalogowany
+            addBook(form, userModel);       //Dodawanie nowej książki do bazy
+            bookList(model, userModel);     //wysyłanie listy książek zalogowanego usera na strone
+            return "redirect:/";
+        }
+        return "redirect:/login";
+    }
+
+
+    //-------------------------------------METODY--------------------------------------------------
+
+    private Boolean checkIdBoogInList(@RequestParam(value = "id", required = false) String someId) {
         addBookModels = addBookRepisitory.findByWho(userModel.getId());
         Boolean checkIdEqualsInList=false;
         for (AddBookModel addBookModel : addBookModels) {
@@ -65,45 +113,9 @@ public class MainController {
                 checkIdEqualsInList=true;
             }
         }
-
-        model.addAttribute("checkID",checkIdEqualsInList);
-        System.out.println(checkIdEqualsInList);
-
-        if(someId!="" && someId!=null && checkIdEqualsInList==true){
-            try {
-                model.addAttribute("error", "Pomyślnie usunięto książkę: " + someId);
-                addBookRepisitory.delete(Integer.parseInt(someId));
-                return "redirect:/";
-            }catch (Exception e){
-                model.addAttribute("error", "Podane id nie istnieje: " + someId);
-                return "redirect:/";
-            }
-        }
-
-
-        UserModel userModel= userRepository.findByLogin(userService.getLogin());
-        if(result.hasErrors() && userService.isLogIn()==true){
-            bookList(model, userModel);
-            checkLogin(model);
-
-            return "index";
-        }
-
-
-        if(userService.isLogIn()==true){
-            model.addAttribute("bookForm",new AddBookForm());
-            checkLogin(model);              //Sprawdza czy User jest zalogowany
-            addBook(form, userModel);       //Dodawanie nowej książki do bazy
-            bookList(model, userModel);     //wysyłanie listy książek zalogowanego usera na strone
-
-
-            return "redirect:/";
-        }
-        return "redirect:/login";
+        return checkIdEqualsInList;
     }
 
-
- //-------------------------------------METODY--------------------------------------------------
 
     private void addBook(@ModelAttribute("bookForm") @Valid AddBookForm form, UserModel userModel) {
         AddBookModel addBookModel = new AddBookModel();

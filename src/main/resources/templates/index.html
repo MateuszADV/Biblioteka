@@ -57,15 +57,17 @@
     </center>
 </div>
 <div>
-    <h2><a th:href="delBook">Usuwanię książek</a></h2>
     <div>
+        <center>
+            <h2><a>Usuwanię książek</a></h2>
         <form method="post" th:name="delBook" th:action="@{/}">
             <p>Podaj Id książki do usunięcia<input type="text" th:name="id" placeholder="ID"> </p>
             <p><input type="submit" value="Usuń"></p>
         </form>
 
-        <span th:text="${error}"></span>
+        <p th:text="${error}"></p>
         <p th:text = ${checkId}></p>
+        </center>
     </div>
 </div>
 
