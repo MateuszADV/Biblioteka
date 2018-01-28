@@ -58,7 +58,7 @@ public class MainController {
                             @RequestParam(value = "id",required = false) String someId,
                             Model model){
 
-        if(someId!="" && someId!=null){     //sprawdzanie czy Id jest pustu lub
+        if(someId!="" && someId!=null){     //sprawdzanie czy Id jest pustu lub null
             Boolean checkIdEqualsInList = checkIdBoogInList(someId); //zwraca czy dana książka którą user
                                                                     //chce usunąć znajduje sie w jego bazie książęk
             model.addAttribute("checkID",checkIdEqualsInList);
