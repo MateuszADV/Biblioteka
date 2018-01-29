@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Logowanie</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css">
 </head>
 <body>
-    <div style="text-align: center">
-        <span><h1>Zaloguj się</h1></span>
-        <p>LUB</p>
-        <p><a th:href="register">rejestracja</a></p>
-
+    <div class="container">
+        <div class="login">
+            <span><h1>Zaloguj się</h1></span>
+            <p>LUB</p>
+            <p><a th:href="register">rejestracja</a></p>
             <span th:text="${info}"></span>
-        </br>
+        </div>
 
         <form method="post" th:action="@{/login}">
             <p><input type="text" th:name="login" placeholder="login"></p>
             <p><input type="password" th:name="password" placeholder="hasło"></p>
-            <p><input type="submit" value="wyslij"></p>
+            <p><input type="submit" value="Loguj"></p>
         </form>
         </h1>
 

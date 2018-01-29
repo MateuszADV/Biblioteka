@@ -1,0 +1,39 @@
+body
+{
+    background: url("images/books.jpg") top center;
+}
+
+.container
+{
+    text-align: center;
+    color: white;
+}
+
+.login
+{
+    /*text-align: center;*/
+    color: white;
+}
+
+.addbook
+{
+    color: white;
+}
+
+#delbook
+{
+    color: white;
+}
+
+
+a
+{
+    text-decoration: none;
+    color: white;
+}
+
+a:hover
+{
+    color: azure;
+}
+

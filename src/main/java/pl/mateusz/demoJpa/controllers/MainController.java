@@ -46,8 +46,9 @@ public class MainController {
             bookList(model, userModel);
 
             return "index";
+        }else {
+            return "redirect:/login";
         }
-        return "redirect:/login";
     }
 
     private List<AddBookModel> addBookModels = new ArrayList<>();
@@ -57,6 +58,8 @@ public class MainController {
                             @RequestParam(value = "id",required = false) String someId,
                             Model model){
 
+
+
         if(someId!="" && someId!=null){     //sprawdzanie czy Id jest pustu lub null
             Boolean checkIdEqualsInList = checkIdBoogInList(someId); //zwraca czy dana książka którą user
                                                                     //chce usunąć znajduje sie w jego bazie książęk
@@ -65,10 +68,10 @@ public class MainController {
 
             //Usuwanie książki na podstawie podanego id przez usera
             if(checkIdEqualsInList==true) {
-                model.addAttribute("error", "Pomyślnie usunięto książkę: " + someId);
-                addBookRepisitory.delete(Integer.parseInt(someId));
+                addBookRepisitory.delete(Integer.parseInt(someId)); //usuwanie książki o podanym id przez usera z bazy danych
+                model.addAttribute("error", "Pomyślnie usunięto książkę o ID: " + someId);
                 bookList(model, userModel);
-                checkLogin(model);
+                //checkLogin(model);
                 return "index";
 
                /* try {
@@ -81,7 +84,9 @@ public class MainController {
                     return "index";
                 }*/
             }else {
-                return "redirect:/";
+                model.addAttribute("error", "Ksiązka o id " + someId+" nie istnieje w twojej bazie");
+                bookList(model, userModel);
+                return "index";
             }
         }
 
@@ -99,24 +104,27 @@ public class MainController {
             bookList(model, userModel);     //wysyłanie listy książek zalogowanego usera na strone
             return "redirect:/";
         }
+
         return "redirect:/login";
     }
 
 
     //-------------------------------------METODY--------------------------------------------------
 
+    //Sprawdza czy id książki które wpisał urzytkownik jest w bazie książek, które dodał
     private Boolean checkIdBoogInList(@RequestParam(value = "id", required = false) String someId) {
-        addBookModels = addBookRepisitory.findByWho(userModel.getId());
+        addBookModels = addBookRepisitory.findByWho(userModel.getId()); //pobranie listy książek usera
         Boolean checkIdEqualsInList=false;
+        //pętla sprawdzająca czy dane id książki jest w bazie usera
         for (AddBookModel addBookModel : addBookModels) {
             if(addBookModel.getId()==Integer.parseInt(someId)){
-                checkIdEqualsInList=true;
+                checkIdEqualsInList=true;  // zwraca true jeśli id książki zostało znalezione
             }
         }
         return checkIdEqualsInList;
     }
 
-
+    // Dodawanei nowej ksiązki przez usera do bazy danych
     private void addBook(@ModelAttribute("bookForm") @Valid AddBookForm form, UserModel userModel) {
         AddBookModel addBookModel = new AddBookModel();
         addBookModel.setWho(userModel.getId());
@@ -128,12 +136,12 @@ public class MainController {
     }
 
     private void checkLogin(Model model) {
-        model.addAttribute("isLogin",userService.isLogIn());
-        model.addAttribute("login",userService.getLogin());
+        model.addAttribute("isLogin",userService.isLogIn()); //wysyłanie na stronę czy user jest zalogowany
+        model.addAttribute("login",userService.getLogin());  //wysyłanie na stronę loginu usera na stronę
     }
 
     private void bookList(Model model, UserModel userModel) {
-        addBookModels = addBookRepisitory.findByWho(userModel.getId());
-        model.addAttribute("bookModel",addBookModels);
+        addBookModels = addBookRepisitory.findByWho(userModel.getId());  //pobieranie listy książek usera
+        model.addAttribute("bookModel",addBookModels);      //wysyłanie lity książek na strone
     }
 }
