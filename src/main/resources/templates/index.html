@@ -65,9 +65,8 @@
                 </table>
             </div>
         </center>
-    </div>
         <div id="delbook">
-                <h2><a>Usuwanię książek</a></h2>
+            <h2><a>Usuwanię książek</a></h2>
             <form method="post" th:name="delBook" th:action="@{/}">
                 <p>Podaj Id książki do usunięcia  <input type="text" th:name="id" placeholder="ID"> </p>
                 <p><input type="submit" value="Usuń"></p>
@@ -77,6 +76,8 @@
             <p th:text = ${checkId}></p>
 
         </div>
+    </div>
+
         <div class="footer">
             <h2>STOPKA INFO</h2>
         </div>

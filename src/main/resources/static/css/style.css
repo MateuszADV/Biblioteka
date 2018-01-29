@@ -49,14 +49,13 @@ body
 {
     text-align: center;
     color: white;
-    background-color: green;
 }
 
 
 a
 {
     text-decoration: none;
-    color: white;
+    color: blue;
 }
 
 a:hover

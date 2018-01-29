@@ -71,6 +71,7 @@ public class MainController {
                 addBookRepisitory.delete(Integer.parseInt(someId)); //usuwanie książki o podanym id przez usera z bazy danych
                 model.addAttribute("error", "Pomyślnie usunięto książkę o ID: " + someId);
                 bookList(model, userModel);
+                checkLogin(model);
                 //checkLogin(model);
                 return "index";
 
@@ -86,6 +87,7 @@ public class MainController {
             }else {
                 model.addAttribute("error", "Ksiązka o id " + someId+" nie istnieje w twojej bazie");
                 bookList(model, userModel);
+                checkLogin(model);
                 return "index";
             }
         }
