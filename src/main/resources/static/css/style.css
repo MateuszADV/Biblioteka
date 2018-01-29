@@ -5,8 +5,33 @@ body
 
 .container
 {
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: lightgray;
+}
+
+.heder
+{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.content
+{
+    min-height: 470px;
     text-align: center;
     color: white;
+}
+
+.footer
+{
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 15px;
 }
 
 .login
@@ -22,7 +47,9 @@ body
 
 #delbook
 {
+    text-align: center;
     color: white;
+    background-color: green;
 }
 
 
