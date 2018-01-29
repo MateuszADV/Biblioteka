@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.mateusz.demoJpa.models.AddBookModel;
-import pl.mateusz.demoJpa.models.BookModel;
 import pl.mateusz.demoJpa.models.UserModel;
 import pl.mateusz.demoJpa.models.forms.AddBookForm;
 import pl.mateusz.demoJpa.models.repositories.AddBookRepisitory;
@@ -69,6 +68,7 @@ public class MainController {
                 model.addAttribute("error", "Pomyślnie usunięto książkę: " + someId);
                 addBookRepisitory.delete(Integer.parseInt(someId));
                 bookList(model, userModel);
+                checkLogin(model);
                 return "index";
 
                /* try {

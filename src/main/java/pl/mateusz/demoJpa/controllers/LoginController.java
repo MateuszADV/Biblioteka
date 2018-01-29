@@ -27,6 +27,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String loginGet(){
+        userService.setLogIn(false);
         return "login";
     }
 
