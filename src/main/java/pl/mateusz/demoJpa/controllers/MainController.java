@@ -72,7 +72,6 @@ public class MainController {
                 model.addAttribute("error", "Pomyślnie usunięto książkę o ID: " + someId);
                 bookList(model, userModel);
                 checkLogin(model);
-                //checkLogin(model);
                 return "index";
 
                /* try {
