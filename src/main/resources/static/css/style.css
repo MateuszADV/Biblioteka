@@ -5,7 +5,7 @@ body
 
 .container
 {
-    width: 1000px;
+    width: 700px;
     margin-right: auto;
     margin-left: auto;
     background-color: lightgray;
@@ -23,34 +23,42 @@ body
 {
     min-height: 470px;
     text-align: center;
-    color: white;
+}
+
+.login
+{
+    /*text-align: center;*/
+    color: black;
+}
+
+.addbook
+{
+    float: left;
+    border: 1px dotted red;
+    color: black;
+    padding: 15px;
+}
+
+#delbook
+{
+    float: left;
+    text-align: center;
+    color: black;
 }
 
 .footer
 {
+    clear: both;
     text-align: center;
     background-color: black;
     color: white;
     padding: 15px;
 }
 
-.login
-{
-    /*text-align: center;*/
-    color: white;
-}
-
-.addbook
-{
-    color: white;
-}
-
-#delbook
+.register
 {
     text-align: center;
-    color: white;
 }
-
 
 a
 {
@@ -61,5 +69,10 @@ a
 a:hover
 {
     color: azure;
+}
+
+table tr,td
+{
+    text-align: right;
 }
 

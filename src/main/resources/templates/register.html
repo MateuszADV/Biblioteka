@@ -3,45 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Rejestracja</title>
+    <link rel="stylesheet" th:href="@{css/style.css}" type="text/css">
 </head>
 <body>
-<div style="text-align: center">
-    <center>
-    <br>
-    <span th:text="${info}"></span>
-    </br>
-    <div>
-        <h1>REJESTRACJA</h1>
-        <p><a th:href="login">Logowanie</a></p>
-    </div>
-    <form method="post" th:object="${registerForm}"  th:action="@{/register}">
-        <span><p th:text="${checkLogin}"></p></span>
-        <table>
-            <tr>
-                <td>Login  </td>
-                <td ><input type="text" th:field="*{login}" placeholder="login"></td>
-                <td> <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Error</span></td>
-            </tr>
-           <tr>
-               <td>Password  </td>
-               <td><input type="password" th:field="*{password}" placeholder="hasło"></td>
-               <td><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></td>
-           </tr>
-            <tr>
-                <td>Imię Nazwisko  </td>
-                <td><input type="text" th:field="*{name}" placeholder="imie nazwisko"></td>
-                <td><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input type="submit" value="wyslij"></td>
-                <td></td>
-            </tr>
-        </table>
-    </form>
+<div class="container">
+    <div class="content">
+        <div class="heder">
+            <h3><p> NAGłÓWEK STRONY</p></h3>
+        </div>
+        <div>
+            <br>
+            <span th:text="${info}"></span>
+            </br>
+            <h1>REJESTRACJA</h1>
+            <p><a th:href="login">Logowanie</a></p>
+        </div>
+        <div class="register">
+            <center>
+            <form method="post" th:object="${registerForm}"  th:action="@{/register}">
+                <span><p th:text="${checkLogin}"></p></span>
+                <table>
+                    <tr>
+                        <td>Login  </td>
+                        <td ><input type="text" th:field="*{login}" placeholder="login"></td>
+                        <td> <span th:if="${#fields.hasErrors('login')}" th:errors="*{login}">Error</span></td>
+                    </tr>
+                   <tr>
+                       <td>Password  </td>
+                       <td><input type="password" th:field="*{password}" placeholder="hasło"></td>
+                       <td><span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span></td>
+                   </tr>
+                    <tr>
+                        <td>Imię Nazwisko  </td>
+                        <td><input type="text" th:field="*{name}" placeholder="imie nazwisko"></td>
+                        <td><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="wyslij"></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </form>
+            </center>
+        </div>
     </h1>
+    </div>
+    <div class="footer">
+        <h2>STOPKA INFO</h2>
+    </div>
 
-    </center>
 </div>
 </body>
 </html>
