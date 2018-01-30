@@ -5,7 +5,7 @@ body
 
 .container
 {
-    width: 700px;
+    width: 800px;
     margin-right: auto;
     margin-left: auto;
     background-color: lightgray;
@@ -31,24 +31,38 @@ body
     color: black;
 }
 
+.logout
+{
+    text-align: right;
+    padding-right: 10px;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
 .addbook
 {
     float: left;
-    border: 1px dotted red;
     color: black;
+    padding: 15px;
+}
+#adBookTable
+{
+    float: left;
     padding: 15px;
 }
 
 #delbook
 {
-    float: left;
+    clear: both;
+    border-top: 1px solid black;
     text-align: center;
     color: black;
+    padding: 25px;
 }
 
 .footer
 {
-    clear: both;
+
     text-align: center;
     background-color: black;
     color: white;
