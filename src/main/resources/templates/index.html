@@ -16,9 +16,10 @@
             <a th:href="login">wyloguj</a>
 
         </div>
-        <center>
+
             <span><h1 th:text="' Witaj '+${login}"></h1></span>
        <p>Dodaj książki do bazy</p>
+        <center>
         <div class="addbook">
             <form method="post" th:object="${bookForm}" th:action="@{/}">
                 <table>
@@ -46,6 +47,7 @@
 
             </form>
         </div>
+
             <div id="adBookTable">
                 <table  border="1" cellpadding="3" cellspacing="0" align="center" style="background-color: cadetblue">
                     <tr>
@@ -77,8 +79,8 @@
             <p th:text = ${checkId}></p>
 
         </div>
-    </div>
 
+    </div>
         <div class="footer">
             <p th:text="#{footer}"></p>
         </div>
