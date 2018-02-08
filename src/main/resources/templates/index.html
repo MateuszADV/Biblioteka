@@ -38,12 +38,12 @@
                     </tr>
                     <tr>
                         <td>Liczba Stron   </td>
-                        <td><input type="number" th:field="*{pages}" placeholder="iczba stron"></td>
+                        <td><input type="number" th:field="*{pages}" placeholder="liczba stron"></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Dodaj"></td>
+                        <td><input class="btn btn-success" type="submit" value="Dodaj"></td>
                         <td></td>
                     </tr>
                 </table>
@@ -76,7 +76,7 @@
             <form method="post" th:name="delBook" th:action="@{/}">
                 <p>Podaj Id książki do usunięcia </p>
                 <p><input type="text" th:name="id" placeholder="ID"> </p>
-                <p><input type="submit" value="Usuń"></p>
+                <p><input class="btn btn-danger" type="submit" value="Usuń"></p>
             </form>
 
             <p th:text="${error}"></p>

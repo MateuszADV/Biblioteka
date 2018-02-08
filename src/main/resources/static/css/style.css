@@ -16,7 +16,7 @@ body
 
 .heder
 {
-    height: 10vh;
+    height: 80px;
     text-align: center;
     background-color: black;
     color: white;
@@ -90,6 +90,7 @@ a
 
 a:hover
 {
+    text-decoration: none;
     color: azure;
 }
 
