@@ -2,13 +2,15 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Strona główna</title>
+    <title>Strona główna</title><link href="https://fonts.googleapis.com/css?family=Barlow+Condensed&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{css/style.css}" type="text/css">
 </head>
 <body>
 <div class="container">
     <div class="heder">
-        <p th:text="#{heder}"></p>
+        <h1 th:text="#{heder}"></h1>
     </div>
     <div class="content">
 
@@ -18,9 +20,10 @@
         </div>
 
             <span><h1 th:text="' Witaj '+${login}"></h1></span>
-       <p>Dodaj książki do bazy</p>
-        <center>
+       <h3>Dodaj książki do bazy</h3>
+
         <div class="addbook">
+            <center>
             <form method="post" th:object="${bookForm}" th:action="@{/}">
                 <table>
                     <tr>
@@ -46,6 +49,7 @@
                 </table>
 
             </form>
+            </center>
         </div>
 
             <div id="adBookTable">
@@ -66,7 +70,7 @@
                     </th:block>
                 </table>
             </div>
-        </center>
+
         <div id="delbook">
             <h2>Usuwanię książek</h2>
             <form method="post" th:name="delBook" th:action="@{/}">
@@ -85,5 +89,7 @@
             <p th:text="#{footer}"></p>
         </div>
 </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
