@@ -5,9 +5,9 @@ import javax.validation.constraints.Size;
 
 public class RegisterForm {
 
-    @Size(min=5,max=20,message = "Login musi mieć min: 3 znaki a max: 20 znaków")
+    @Size(min=3,max=20,message = "Login musi mieć min: 3 znaki a max: 20 znaków")
     private String login;
-    @Size(min=5,max=20, message = "Hasło musi mieć min: 3 znaki a max: 20 znaków")
+    @Size(min=5,max=20, message = "Hasło musi mieć min: 5 znaki a max: 20 znaków")
     private String password;
     @Pattern(regexp = "[A-Za-z]+ [A-Za-z]+",message = "Forma name to Name Lastname")
     private String name;
